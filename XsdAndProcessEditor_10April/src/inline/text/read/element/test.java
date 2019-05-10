@@ -13,7 +13,7 @@ public class test {
 
 		directorypath = "D:\\XmlAndXsds\\Newfolder";
 
-		filename = "abc";
+		filename = "pqr";
 
 		// Construct the file object from existing file.
 		File file = new File(directorypath + "\\" + filename + ".process");
@@ -30,17 +30,17 @@ public class test {
 
 		StringBuffer inputBuffer = new StringBuffer();
 
-		inputBuffer.append(System.lineSeparator()).append(
+		inputBuffer.append(
 				"<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" elementFormDefault=\"qualified\" attributeFormDefault=\"unqualified\">")
-				.toString().getBytes();
+				.append(System.lineSeparator()).toString().getBytes();
 
 		while ((line = file1.readLine()) != null) {
 			if (!line.trim().startsWith("<xsd:element") && !line.trim().startsWith("<xsd:complexType>")
 					&& !line.trim().startsWith("<xsd:sequence>") && !line.trim().startsWith("</xsd:sequence>")
 					&& !line.trim().startsWith("</xsd:complexType>") && !line.trim().startsWith("</xsd:element>")) {
 			} else {
-				line = line.replace("xsd:", "xs:");
-				inputBuffer.append(System.lineSeparator()).append(line);
+				line = lines.replace("xsd:", "xs:");
+				inputBuffer.append(line).append(System.lineSeparator());
 			}
 		}
 
